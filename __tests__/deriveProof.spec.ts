@@ -40,6 +40,15 @@ describe("BbsBlsSignatureProof2020", () => {
     expect(result).toBeDefined();
   });
 
+  it("should derive proof with empty reveal document", async () => {
+    const result = await deriveProof(testSignedDocument, {}, {
+      suite: new BbsBlsSignatureProof2020(),
+      documentLoader: customLoader
+    }
+    );
+    expect(result).toBeDefined();
+  });
+
   it("should derive proof revealing all statements", async () => {
     const result = await deriveProof(testSignedDocument, testRevealDocument, {
       suite: new BbsBlsSignatureProof2020(),
